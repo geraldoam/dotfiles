@@ -1,0 +1,339 @@
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+
+#
+#
+#
+#	i3 config
+#		     by i386angel
+#
+#
+
+
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+
+#
+#
+#	IMPORTANT CONFIGS
+#
+#
+
+
+
+# Mod
+set $mod Mod4
+
+
+
+# Font
+font pango:monospace 8
+
+
+
+# Terminal
+bindsym $mod+Return exec xfce4-terminal
+
+
+
+# Kill Window
+bindsym $mod+Shift+q kill
+
+
+
+# Start Rofi command
+bindsym $mod+d exec rofi -show run -lines 10 -width 20 -disable-history -font "Hack 10"
+
+
+
+
+# Border color window
+
+set $windows-color 	 #464c5a
+
+client.focused          $windows-color $windows-color $windows-color $windows-color
+client.unfocused        $windows-color $windows-color $windows-color $windows-color
+client.focused_inactive $windows-color $windows-color $windows-color $windows-color
+client.urgent           $windows-color $windows-color $windows-color $windows-color
+
+
+
+# i3-gaps
+
+for_window [class="^.*"] border pixel 3
+gaps inner 0
+gaps outer 0
+
+
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+
+#
+#
+#	i3bar(default) config
+#
+#
+
+
+
+# i3bar(default) Workspace Name
+set $ws1 "  1  "
+set $ws2 "  2  "
+set $ws3 "  3  "
+set $ws4 "  4  "
+set $ws5 "  5  "
+set $ws6 "  6  "
+set $ws7 "  7  "
+set $ws8 "  8  "
+set $ws9 "  9  "
+set $ws10 "  10  "
+
+
+
+# 	i3 bar config colors
+
+#	set $bg-color 	         #070b12
+#	set $inactive-bg-color   #272B34
+#	set $text-color          #FFFFFF
+#	set $inactive-text-color #B8B8B8
+#	set $urgent-bg-color     #992121
+
+
+
+# Default bar (i3blocks)
+
+#	bar {
+#		status_command i3blocks
+#		colors {
+#			background $bg-color
+#	    	separator #757575
+#			#                  border             background         text
+#			focused_workspace  $bg-color          $bg-color          $text-color
+#			inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#			urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#		}
+#	}
+
+
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+
+#
+#	Open apps & Start with boot apps
+#
+
+
+
+# Thunar
+
+bindsym $mod+t exec thunar
+
+
+
+# Picom (composer)
+exec --no-startup-id picom -C
+
+
+
+# NumLockX (numlock on when boot)
+exec_always --no-startup-id numlockx on
+
+
+
+# Print with xfce4
+bindsym Print exec xfce4-screenshooter
+
+
+
+# Nitrogen (wallpaper set)
+exec --no-startup-id nitrogen --restore
+
+
+
+# Redimension with 10px
+bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
+
+
+
+# xrandr (my monitor config)
+exec --no-startup-id xrandr --output LVDS1 --auto --left-of VGA1
+
+
+
+# Polybar start script
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+
+
+# Notion
+bindsym $mod+n exec notion
+
+
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+
+#
+#
+#	NOT IMPORTANT CONFIGS (default configs)
+#
+#
+
+
+# Position with mouse
+
+floating_modifier $mod
+
+
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ccedilla focus right
+
+
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ccedilla move right
+
+
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+
+
+# focus the child container
+#bindsym $mod+d focus child
+
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym ccedilla resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+
+# Switch to Workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+
+
+# Move Focused Container To Workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
