@@ -1,0 +1,332 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;	
+;					i386angel config
+;
+;==========================================================
+
+
+
+
+
+;
+;		COLORS
+;
+
+[colors]
+;background = ${xrdb:color0:#222}
+background =  	#2E3440
+background-alt =  	#2E3440
+;foreground = ${xrdb:color7:#222}
+foreground = #f8f8f2
+foreground-alt = #f8f8f2
+primary = #6272a4
+secondary = #6272a4
+alert = #bd2c40
+
+
+
+
+;
+;
+;	BAR
+;
+;
+
+
+
+[bar/bar1]
+monitor = VGA1
+width = 100%
+height = 25
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+
+bottom = false
+
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #FFFFFF
+
+
+;border-right-size = 100
+;border-left-size = 100
+;border-top-size = 6
+;border-bottom-size = 2
+;border-color = #AAAAAA
+
+
+padding-left = 5
+padding-right = 5
+
+module-margin-left = 8
+module-margin-right = 8
+
+font-0 = fixed:pixelsize=8;1
+font-1 = FontAwesome5Free:style=Solid:pixelsize=7:antialias=true;1
+font-2 = FontAwesome5Brands:style=Solid:pixelsize=7:antialias=true;1
+font-3 = "Iosevka Nerd Font:pixelsize=7:antialias=true;3"
+
+modules-right = pulseaudio memory protonvpn-status date
+modules-center =  i3
+modules-left = menu
+
+tray-position = right
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+
+
+
+;
+;
+;	MODULES
+;
+;
+
+
+
+;
+;	XWINDOW
+;
+
+[module/xwindow]
+type = internal/xwindow
+label =   %title:0:100:...%
+
+
+
+
+;
+;	FILESYSTEM
+;
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = "  %free%"
+#label-mounted-underline = ${colors.primary}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+
+
+
+
+;
+; i3
+;
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-margin-right = 5
+label-focused-background = ${colors.background-alt}
+label-focused-overline= ${colors.foreground}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-margin-right = 5
+label-unfocused-foreground = #5D6161
+label-unfocused-overline = #4E4D4F
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-margin-right = 5
+label-visible-background = ${self.label-focused-background}
+label-visible-overline = ${colors.foreground}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+
+
+
+;
+;	MEMORY
+;
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = ${colors.primary}
+label = "  %mb_free%"
+
+
+
+
+
+;
+;	DATE
+;
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt ="  %d-%m-%Y               "
+
+time = "  %H:%M"  
+time-alt = %H:%M  
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = ${colors.primary}
+
+label = "%date% %time%"
+
+
+
+
+;
+;	NETWORK
+;
+
+[module/network]
+type = internal/network
+interface = wlp2s0
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3.0
+
+format-connected = <label-connected>
+
+format-disconnected = <label-disconnected>
+
+format-packetloss = <animation-packetloss> <label-connected>
+
+label-connected = "  %local_ip%"
+label-connected-foreground = ${colors.foreground}
+#label-connected-underline = ${colors.primary}
+
+label-disconnected = Sem sinal!
+label-disconnected-foreground = #66ffffff
+
+
+
+
+
+;
+;	PULSEAUDIO
+;
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = "  %percentage%"
+label-volume-foreground = ${root.foreground}
+#label-volume-underline = ${colors.primary}
+
+label-muted = "  Muted"
+label-muted-foreground = #666
+
+bar-volume-width = 10
+
+
+
+
+;
+;	PROTONVPN
+;
+
+[module/protonvpn-status]
+type = custom/script
+label =  %output%
+exec = /home/i386angel/.config/polybar/scripts/protonvpn.sh
+interval = 5
+
+
+
+
+
+
+;
+;	MENU
+;
+
+[module/menu]
+type = custom/menu
+
+expand-right = true
+format-spacing = 5
+
+menu-0-0 = "  "
+menu-0-0-underline = #FC3900
+menu-0-0-exec =  systemctl poweroff
+menu-0-1 = "  "
+menu-0-1-underline = #F3EF59
+menu-0-1-exec = systemctl reboot
+
+
+label-open = ""
+label-open-foreground = ${colors.foreground}
+label-open-background = #2E3440
+label-close = "          "
+label-close-underline = ${colors.foreground}
+label-close-foreground = ${colors.foreground}
+label-separator = "  "
+
+
+
+;
+;	SETTINGS
+;
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+
+;
+;	WM
+;
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
