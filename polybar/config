@@ -22,8 +22,8 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background =  	#2E3440
-background-alt =  	#2E3440
+background =  	#24242C
+background-alt =  	#24242C
 ;foreground = ${xrdb:color7:#222}
 foreground = #f8f8f2
 foreground-alt = #f8f8f2
@@ -45,7 +45,7 @@ alert = #bd2c40
 [bar/bar1]
 monitor = VGA1
 width = 100%
-height = 25
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -64,25 +64,25 @@ line-color = #FFFFFF
 
 ;border-right-size = 100
 ;border-left-size = 100
-;border-top-size = 6
+;border-top-size = 2
 ;border-bottom-size = 2
-;border-color = #AAAAAA
+;underlineborder-color = #9c9c9c
 
 
 padding-left = 5
 padding-right = 5
 
-module-margin-left = 8
-module-margin-right = 8
+module-margin-left = 5
+module-margin-right = 5
 
 font-0 = fixed:pixelsize=8;1
 font-1 = FontAwesome5Free:style=Solid:pixelsize=7:antialias=true;1
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=7:antialias=true;1
 font-3 = "Iosevka Nerd Font:pixelsize=7:antialias=true;3"
 
-modules-right = pulseaudio memory protonvpn-status date
-modules-center =  i3
-modules-left = menu
+modules-right = pulseaudio memory protonvpn-status info-publicip network filesystem date
+modules-center = 
+modules-left = i3
 
 tray-position = right
 
@@ -91,6 +91,7 @@ override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+separator = "%{F#646564} | %{F-}"
 
 
 
@@ -124,7 +125,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = "  %free%"
+label-mounted = "%{F#7ac29b}  %{F-} %free%"
 #label-mounted-underline = ${colors.primary}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -151,21 +152,18 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-margin-right = 5
 label-focused-background = ${colors.background-alt}
-label-focused-overline= ${colors.foreground}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-margin-right = 5
 label-unfocused-foreground = #5D6161
-label-unfocused-overline = #4E4D4F
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-margin-right = 5
 label-visible-background = ${self.label-focused-background}
-label-visible-overline = ${colors.foreground}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -174,7 +172,8 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
-; label-separator = |
+;label-separator = |
+
 
 
 
@@ -186,10 +185,32 @@ label-urgent-padding = 2
 
 [module/memory]
 type = internal/memory
+
+format = <label> <bar-used>
+
 interval = 2
 format-prefix-foreground = ${colors.foreground-alt}
 #format-underline = ${colors.primary}
-label = "  %mb_free%"
+label = "mem"
+
+bar-used-indicator =
+bar-used-width = 10
+bar-used-foreground-0 = #5e925e
+bar-used-foreground-1 = #5e925e
+bar-used-foreground-2 = #a27f5d
+bar-used-foreground-3 = #af6b5f
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #484948
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
 
 
 
@@ -203,17 +224,31 @@ label = "  %mb_free%"
 type = internal/date
 interval = 5
 
-date =
-date-alt ="  %d-%m-%Y               "
 
-time = "  %H:%M"  
-time-alt = %H:%M  
+time = "%{F#564e79}  %{F-} %H:%M"  
+time-alt =   date %d / %m 
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 #format-underline = ${colors.primary}
 
-label = "%date% %time%"
+label = "%time%"
+
+
+
+
+
+;
+;	IP
+;
+[module/info-publicip]
+type = custom/script
+
+format = <label>
+label = %{F#c3da64} ip %{F-} %output:0:15:...%
+exec = ~/.config/polybar/scripts/info-publicip/info-publicip.sh
+interval = 60
+
 
 
 
@@ -236,11 +271,11 @@ format-disconnected = <label-disconnected>
 
 format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected = "  %local_ip%"
+label-connected = "%{F#63bcc1} wlp2s0 %{F-} %local_ip%"
 label-connected-foreground = ${colors.foreground}
 #label-connected-underline = ${colors.primary}
 
-label-disconnected = Sem sinal!
+label-disconnected = desconnected
 label-disconnected-foreground = #66ffffff
 
 
@@ -254,8 +289,8 @@ label-disconnected-foreground = #66ffffff
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume>
-label-volume = "  %percentage%"
+format-volume ="<ramp-volume>    <bar-volume>"
+label-volume = "%percentage%%"
 label-volume-foreground = ${root.foreground}
 #label-volume-underline = ${colors.primary}
 
@@ -263,6 +298,29 @@ label-muted = "  Muted"
 label-muted-foreground = #666
 
 bar-volume-width = 10
+
+bar-volume-foreground-0 = ${xrdb:color2:#55aa55}
+bar-volume-foreground-1 = ${xrdb:color2:#55aa55}
+bar-volume-foreground-2 = ${xrdb:color2:#55aa55}
+bar-volume-foreground-3 = ${xrdb:color10:#55aa55}
+bar-volume-foreground-4 = ${xrdb:color10:#55aa55}
+bar-volume-foreground-5 = ${xrdb:color10:#f5a70a}
+bar-volume-foreground-6 = ${xrdb:color10:#ff5555}
+bar-volume-foreground-7 = ${xrdb:color10:#ff5555}
+bar-volume-foreground-8 = ${xrdb:color9:#ff5555}
+bar-volume-foreground-9 = ${xrdb:color9:#ff5555}
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 2
+bar-volume-fill = 
+bar-volume-fill-font = 2
+bar-volume-empty = 
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 
 
@@ -273,40 +331,9 @@ bar-volume-width = 10
 
 [module/protonvpn-status]
 type = custom/script
-label =  %output%
-exec = /home/i386angel/.config/polybar/scripts/protonvpn.sh
+label = %output%
+exec = ~/.config/polybar/scripts/protonvpn/protonvpn.sh
 interval = 5
-
-
-
-
-
-
-;
-;	MENU
-;
-
-[module/menu]
-type = custom/menu
-
-expand-right = true
-format-spacing = 5
-
-menu-0-0 = "  "
-menu-0-0-underline = #FC3900
-menu-0-0-exec =  systemctl poweroff
-menu-0-1 = "  "
-menu-0-1-underline = #F3EF59
-menu-0-1-exec = systemctl reboot
-
-
-label-open = ""
-label-open-foreground = ${colors.foreground}
-label-open-background = #2E3440
-label-close = "          "
-label-close-underline = ${colors.foreground}
-label-close-foreground = ${colors.foreground}
-label-separator = "  "
 
 
 
