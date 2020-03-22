@@ -9,21 +9,21 @@ ___
 
 ___
 
-> **rofi** (to launch apps)
+- **rofi** (to launch apps)
 
-> **xfce4-terminal** (terminal)
+- **xfce4-terminal** (terminal)
 
-> **i3-gaps** (to get margin window)
+- **i3-gaps** (to get margin window)
 
-> **compton** (composer)
+- **compton** (composer)
 
-> **polybar** (the bar)
+- **polybar** (the bar)
 
-> **xfce4-screenshooter** (print with function key PrintScreen)
+- **xfce4-screenshooter** (print with function key PrintScreen)
 
-> **nitrogen** (wallpaper set)
+- **nitrogen** (wallpaper set)
 
-> **ProtonVPN** (if you use NordVPN you need to edit script file. if don't use VPN, remove module from bar in the config file)
+- **ProtonVPN** (if you use NordVPN you need to edit script file. if don't use VPN, remove module from bar in the config file)
 
 ___
 
@@ -35,17 +35,21 @@ ___
 
 ___
 
-> Install the packages.
+- Install the packages.
 
-> Install the fonts to your font folder. Example: **.fonts** or **/usr/share/fonts/**.
+- Install the fonts to your font folder. Example: **.fonts** or **/usr/share/fonts/**.
 
-> Update cache fonts. Command: **fc-cache -vf**
+- Update cache fonts. 
 
-> Replace the i3 config file and polybar files.
+```shell
+$ fc-cache -vf
+```
 
-> Restart your i3.
+- Replace the i3 config file and polybar files.
 
-> Reboot.
+- Restart your i3.
+
+- Reboot.
 
 ___
 
@@ -53,7 +57,7 @@ ___
 
 ___
 
-#### Exemple:
+#### Example:
 ![](example.png)
 
 ___
