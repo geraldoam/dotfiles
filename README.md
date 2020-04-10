@@ -57,7 +57,15 @@ ___
 
 ___
 
-#### Example:
+#### Examples:
 ![](example.png)
+
+<hr>
+
+![](example2.png)
+
+<hr>
+
+![](bar_example.png)
 
 ___
