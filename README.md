@@ -66,6 +66,6 @@ ___
 
 <hr>
 
-![](bar_example.png)
+<p align="center"><img align="center" src="bar_example.png"></p>
 
 ___
