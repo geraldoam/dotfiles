@@ -6,8 +6,8 @@
 #
 #
 #
-#	i3 config
-#		     by i386angel
+#       i3 config
+#                    by i386angel
 #
 #
 
@@ -19,7 +19,7 @@
 
 #
 #
-#	IMPORTANT CONFIGS
+#       IMPORTANT CONFIGS
 #
 #
 
@@ -53,7 +53,7 @@ bindsym $mod+d exec rofi -show run -lines 10 -width 20 -disable-history -font "H
 
 # Border color window
 
-set $windows-color 	 #464c5a
+set $windows-color       #464c5a
 
 client.focused          $windows-color $windows-color $windows-color $windows-color
 client.unfocused        $windows-color $windows-color $windows-color $windows-color
@@ -76,7 +76,7 @@ gaps outer 0
 
 #
 #
-#	i3bar(default) config
+#       i3bar(default) config
 #
 #
 
@@ -96,29 +96,29 @@ set $ws10 "  10  "
 
 
 
-# 	i3 bar config colors
+#       i3 bar config colors
 
-#	set $bg-color 	         #070b12
-#	set $inactive-bg-color   #272B34
-#	set $text-color          #FFFFFF
-#	set $inactive-text-color #B8B8B8
-#	set $urgent-bg-color     #992121
+#       set $bg-color            #070b12
+#       set $inactive-bg-color   #272B34
+#       set $text-color          #FFFFFF
+#       set $inactive-text-color #B8B8B8
+#       set $urgent-bg-color     #992121
 
 
 
 # Default bar (i3blocks)
 
-#	bar {
-#		status_command i3blocks
-#		colors {
-#			background $bg-color
-#	    	separator #757575
-#			#                  border             background         text
-#			focused_workspace  $bg-color          $bg-color          $text-color
-#			inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#			urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#		}
-#	}
+#       bar {
+#               status_command i3blocks
+#               colors {
+#                       background $bg-color
+#               separator #757575
+#                       #                  border             background         text
+#                       focused_workspace  $bg-color          $bg-color          $text-color
+#                       inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#                       urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#               }
+#       }
 
 
 #####################################################################################
@@ -127,7 +127,7 @@ set $ws10 "  10  "
 
 
 #
-#	Open apps & Start with boot apps
+#       Open apps & Start with boot apps
 #
 
 
@@ -136,6 +136,9 @@ set $ws10 "  10  "
 
 bindsym $mod+t exec thunar
 
+
+# Sublime
+bindsym $mod+i exec sublime
 
 
 # Picom (composer)
@@ -157,6 +160,9 @@ bindsym Print exec xfce4-screenshooter
 exec --no-startup-id nitrogen --restore
 
 
+# ProtonVPN
+exec --no-startup-id vpn
+
 
 # Redimension with 10px
 bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
@@ -176,9 +182,6 @@ exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 
-# Notion
-bindsym $mod+n exec notion
-
 
 #####################################################################################
 #####################################################################################
@@ -187,7 +190,7 @@ bindsym $mod+n exec notion
 
 #
 #
-#	NOT IMPORTANT CONFIGS (default configs)
+#       NOT IMPORTANT CONFIGS (default configs)
 #
 #
 
