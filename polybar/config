@@ -28,6 +28,8 @@ foreground-alt = #f8f8f2
 primary = #6272a4
 secondary = #6272a4
 alert = #bd2c40
+module-background = #6f78ac
+
 
 
 
@@ -42,7 +44,7 @@ alert = #bd2c40
 [bar/bar1]
 monitor = VGA-1
 width = 100%
-height = 25
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -61,12 +63,11 @@ line-color = #FFFFFF
 
 ;border-right-size = 100
 ;border-left-size = 100
-border-top-size = 2
-;border-bottom-size = 10
-border-top-color = #1bbaed
+;border-top-size = 0
+;border-bottom-size = 7
+;border-top-color = #1bbaed
 
 
-padding-left = 5
 padding-right = 5
 
 module-margin-left = 5
@@ -75,11 +76,11 @@ module-margin-right = 5
 font-0 = fixed:pixelsize=8;1
 font-1 = FontAwesome5Free:style=Solid:pixelsize=8:antialias=true;1
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=8:antialias=true;1
-font-3 = "Iosevka Nerd Font:pixelsize=9:antialias=true;3"
+font-3 = "Iosevka Nerd Font:pixelsize=8:antialias=true;3"
 font-4 = siji:pixelsize=8;1
 
-modules-right = pulseaudio memory info-publicip protonvpn-status network filesystem date menu
-modules-center = 
+modules-right = pulseaudio filesystem protonvpn-status network date menu
+modules-center =  
 modules-left = i3
 
 tray-position = right
@@ -89,7 +90,7 @@ override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-separator = "%{F#646564} | %{F-}"
+separator = "%{F#646564}  %{F-}"
 
 
 
@@ -123,7 +124,8 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = " %free%"
+label-mounted = "   %free%  "
+format-mounted-padding = 1
 #label-mounted-underline = ${colors.primary}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -147,25 +149,22 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-margin-right = 5
-label-focused-background = ${colors.background-alt}
+label-focused = "  %index%  "
+label-focused-background = ${colors.module-background}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-margin-right = 5
+label-unfocused = "  %index%  "
 label-unfocused-foreground = #5D6161
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-margin-right = 5
+label-visible = "  %index%  "
 label-visible-background = ${self.label-focused-background}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = "  %index%  "
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -326,16 +325,16 @@ interval = 5
 type = custom/menu
 expand-right = true
 
-menu-0-0 = Poweroff
+menu-0-0 = 
 menu-0-0-exec = poweroff
-menu-0-1 = Reboot
+menu-0-1 = 
 menu-0-1-exec = reboot
 
-label-open =  
+label-open =   
 label-open-foreground = #45dbde
-label-close = x
+label-close = 
 
-label-separator = "    |    "
+label-separator = "        "
 
 
 
@@ -344,12 +343,8 @@ label-separator = "    |    "
 ;
 
 [settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
+screenchange-reload = false
+
 
 
 ;

@@ -36,7 +36,7 @@ font pango:monospace 8
 
 
 # Terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec urxvt
 
 
 
@@ -46,14 +46,14 @@ bindsym $mod+Shift+q kill
 
 
 # Start Rofi command
-bindsym $mod+d exec rofi -show run -lines 10 -width 20 -disable-history -font "Hack 10"
+bindsym $mod+d exec rofi -show run -lines 5 -width 20 -disable-history -font "Hack 10"
 
 
 
 
 # Border color window
 
-set $windows-color       #464c5a
+set $windows-color       #6f78ac
 
 client.focused          $windows-color $windows-color $windows-color $windows-color
 client.unfocused        $windows-color $windows-color $windows-color $windows-color
@@ -64,7 +64,7 @@ client.urgent           $windows-color $windows-color $windows-color $windows-co
 
 # i3-gaps
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 gaps inner 0
 gaps outer 0
 
@@ -83,16 +83,16 @@ gaps outer 0
 
 
 # i3bar(default) Workspace Name
-set $ws1 "  1  "
-set $ws2 "  2  "
-set $ws3 "  3  "
-set $ws4 "  4  "
-set $ws5 "  5  "
-set $ws6 "  6  "
-set $ws7 "  7  "
-set $ws8 "  8  "
-set $ws9 "  9  "
-set $ws10 "  10  "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 
 
@@ -142,7 +142,7 @@ bindsym $mod+i exec sublime
 
 
 # Picom (composer)
-exec --no-startup-id picom -C
+# exec --no-startup-id picom -C
 
 
 
@@ -173,7 +173,7 @@ bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
 
 
 # xrandr (my monitor config)
-exec --no-startup-id xrandr --output LVDS1 --auto --left-of VGA1
+exec --no-startup-id ~/.screenlayout/config.sh
 
 
 
