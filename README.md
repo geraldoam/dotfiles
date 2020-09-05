@@ -1,45 +1,52 @@
 # My i3wm config files
-##### by i386angel
+
+##### by gerald0x01
 
 <br>
 
-___
+---
 
-### What i need?
+<p align="center"><img align="center" src="https://user-images.githubusercontent.com/41551840/92292210-63ad0080-eef2-11ea-9e07-81a007bbb911.png"></p>
 
-___
+---
 
-- **rofi** (to launch apps)
+### Requeriments
 
-- **xfce4-terminal** (terminal)
+---
 
-- **i3-gaps** (to get margin window)
+- **i3-gaps**
 
-- **compton** (composer)
-
-- **polybar** (the bar)
-
-- **xfce4-screenshooter** (print with function key PrintScreen)
-
-- **nitrogen** (wallpaper set)
-
-- **ProtonVPN** (if you use NordVPN you need to edit script file. if don't use VPN, remove module from bar in the config file)
-
-___
+- **polybar**
 
 <br>
 
-___
+Ubuntu, Debian
+
+```sh
+$ sudo apt-get install rofi xfce4-terminal compton xfce4-screenshooter nitrogen
+```
+
+Arch
+
+```sh
+$ pacman -S rofi xfce4-terminal compton xfce4-screenshooter nitrogen
+```
+
+---
+
+<br>
+
+---
 
 ### How to use?
 
-___
+---
 
 - Install the packages.
 
 - Install the fonts to your font folder. Example: **.fonts** or **/usr/share/fonts/**.
 
-- Update cache fonts. 
+- Update cache fonts.
 
 ```shell
 $ fc-cache -vf
@@ -51,21 +58,4 @@ $ fc-cache -vf
 
 - Reboot.
 
-___
-
-<br>
-
-___
-
-#### Examples:
-![](example.png)
-
-<hr>
-
-![](example2.png)
-
-<hr>
-
-<p align="center"><img align="center" src="bar_example.png"></p>
-
-___
+---
