@@ -7,7 +7,7 @@
 #
 #
 #       i3 config
-#                    by i386angel
+#                    by gerald0x01
 #
 #
 
@@ -36,7 +36,7 @@ font pango:monospace 8
 
 
 # Terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec xfce4-terminal
 
 
 
@@ -46,14 +46,14 @@ bindsym $mod+Shift+q kill
 
 
 # Start Rofi command
-bindsym $mod+d exec rofi -show run -lines 5 -width 20 -disable-history -font "Hack 10"
+bindsym $mod+d exec rofi -show drun -show-icons -lines 10 -width 40 -font "Hack 10"
 
 
 
 
 # Border color window
 
-set $windows-color       #6f78ac
+set $windows-color      #545557
 
 client.focused          $windows-color $windows-color $windows-color $windows-color
 client.unfocused        $windows-color $windows-color $windows-color $windows-color
@@ -65,8 +65,8 @@ client.urgent           $windows-color $windows-color $windows-color $windows-co
 # i3-gaps
 
 for_window [class="^.*"] border pixel 2
-gaps inner 0
-gaps outer 0
+gaps inner 10
+gaps outer -7
 
 
 #####################################################################################
@@ -83,43 +83,42 @@ gaps outer 0
 
 
 # i3bar(default) Workspace Name
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1  " 1 "  
+set $ws2  " 2 "  
+set $ws3  " 3 "  
+set $ws4  " 4 "  
+set $ws5  " 5 "  
+set $ws6  " 6 "  
+set $ws7  " 7 "  
+set $ws8  " 8 "  
+set $ws9  " 9 "  
+set $ws10  " 10 "  
 
 
 
 #       i3 bar config colors
 
-#       set $bg-color            #070b12
-#       set $inactive-bg-color   #272B34
-#       set $text-color          #FFFFFF
-#       set $inactive-text-color #B8B8B8
-#       set $urgent-bg-color     #992121
+set $bg-color            #070b12
+set $inactive-bg-color   #272B34
+set $text-color          #FFFFFF
+set $inactive-text-color #B8B8B8
+set $urgent-bg-color     #992121
 
 
 
 # Default bar (i3blocks)
 
-#       bar {
-#               status_command i3blocks
-#               colors {
-#                       background $bg-color
+#bar{
+#       status_command i3blocks
+#       colors {
+#               background $bg-color
 #               separator #757575
-#                       #                  border             background         text
-#                       focused_workspace  $bg-color          $bg-color          $text-color
-#                       inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#                       urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#               }
-#       }
-
+#                                border             background         text
+#              focused_workspace  $bg-color          $bg-color          $text-color
+#               inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#               urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#    }
+#}
 
 #####################################################################################
 #####################################################################################
@@ -127,27 +126,31 @@ set $ws10 "10"
 
 
 #
-#       Open apps & Start with boot apps
+#      Open apps & Start with boot apps
 #
 
 
+# Brave
+bindsym $mod+Shift+b exec brave-browser
 
 # Thunar
-
-bindsym $mod+t exec thunar
-
-
-# Sublime
-bindsym $mod+i exec sublime
+bindsym $mod+Shift+t exec thunar
 
 
-# Picom (composer)
-# exec --no-startup-id picom -C
+# Visual Studio Code
+bindsym $mod+Shift+c exec code
+
+# Spotify
+bindsym $mod+Shift+s exec spotify
+
+
+# Compton
+exec_always --no-startup-id compton -c -C -f
 
 
 
 # NumLockX (numlock on when boot)
-exec_always --no-startup-id numlockx on
+exec_always --no-startup-id numlockx
 
 
 
@@ -160,8 +163,6 @@ bindsym Print exec xfce4-screenshooter
 exec --no-startup-id nitrogen --restore
 
 
-# ProtonVPN
-exec --no-startup-id vpn
 
 
 # Redimension with 10px
@@ -169,11 +170,6 @@ bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
 bindsym $mod+Ctrl+Down resize grow height 10 px or 10 ppt
 bindsym $mod+Ctrl+Up resize shrink height 10 px or 10 ppt
 bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
-
-
-
-# xrandr (my monitor config)
-exec --no-startup-id ~/.screenlayout/config.sh
 
 
 
@@ -276,7 +272,7 @@ bindsym $mod+a focus parent
 
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 
 
 
