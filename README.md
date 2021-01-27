@@ -1,7 +1,5 @@
 # My i3wm config files
 
-##### by gerald0x01
-
 <br>
 
 ---
